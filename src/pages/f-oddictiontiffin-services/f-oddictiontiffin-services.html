@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Tiffin Services
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showCart()">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="cartn" color="accent">{{cartn[0].cart_count }}</ion-badge>
+
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page5">
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Name </ion-label>
+      <ion-input type="text" name="name" [(ngModel)]="data.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email ID</ion-label>
+      <ion-input type="text" name="email" [(ngModel)]="data.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Contact Number</ion-label>
+      <ion-input type="text" name="contact" [(ngModel)]="data.contact"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-input type="text" name="address" [(ngModel)]="data.address"></ion-input>
+    </ion-item>
+    <ion-list radio-group name="preference" [(ngModel)]="data.preference">
+    <ion-list-header>
+      Tiffin Preference
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Vegeterian</ion-label>
+      <ion-radio value="veg"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Non-Vegeterian</ion-label>
+      <ion-radio value="non-veg"></ion-radio>
+    </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label>Delivery Time</ion-label>
+      <ion-select name="deliverytime" [(ngModel)]="data.deliverytime">
+        <ion-option value="7pm-8pm">7pm - 8pm</ion-option>
+        <ion-option value="8pm-9pm">8pm - 9pm</ion-option>
+        <ion-option value="9pm-10pm">9pm - 10pm</ion-option>
+        <ion-option value="10pm-11pm">10pm - 11pm</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+  </ion-list>
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button full item-left icon-right (click)="submit()">Submit</button>
+  </ion-toolbar>
+</ion-footer>

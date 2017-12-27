@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Catering
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content id="page13">
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" name="mname" [(ngModel)]="data.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" name="email" [(ngModel)]="data.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Phone</ion-label>
+      <ion-input type="text" name="phone" [(ngModel)]="data.phone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Number of People</ion-label>
+      <ion-input type="text" name="numofpeople" [(ngModel)]="data.numofpeople"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" min="2017" max="2020-10-31" [(ngModel)]="data.date">
+      </ion-datetime>
+
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Time</ion-label>
+      <ion-datetime displayFormat="HH:mm"  [(ngModel)]="data.time">
+      </ion-datetime>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Food type</ion-label>
+      <ion-select name="foodtype" [(ngModel)]="data.foodtype">
+        <ion-option value="Non-veg">Non-Veg</ion-option>
+        <ion-option value="Veg">Veg</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Venue</ion-label>
+      <ion-input type="text" name="venue" [(ngModel)]="data.venue"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Items</ion-label>
+      <ion-input type="text" name="items" [(ngModel)]="data.items"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button full item-left icon-right (click)="submit()">Book Catering</button>
+  </ion-toolbar>
+</ion-footer>

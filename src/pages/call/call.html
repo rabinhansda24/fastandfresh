@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Call
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showCart()">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="cartn" color="accent">{{cartn[0].cart_count }}</ion-badge>
+
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page7"></ion-content>

@@ -1,14 +1,51 @@
+
+
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>
-      Ionic Blank
+      Home
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showCart()">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="cartn" color="accent">{{cartn[0].cart_count }}</ion-badge>
+
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
+<ion-content id="page1">
+  <ion-slides autoplay="3000" loop="true" class="home-slide">
+    <ion-slide class="slide1">
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+        <img src="assets/imgs/b1.jpg">
+
+
+    </ion-slide>
+    <ion-slide>
+
+        <img src="assets/imgs/noodle.jpg">
+
+
+
+    </ion-slide>
+
+  </ion-slides>
+
+  <ion-list>
+
+    <button ion-item *ngFor="let category of categories" (click)="getMenus(category.cid,category.type, category.category_name)">
+      <ion-thumbnail item-start="">
+        <img src="{{url+category.image}}">
+      </ion-thumbnail>
+      {{ category.category_name }} - {{ category.type }} <ion-icon item-end name="arrow-forward"></ion-icon>
+    </button>
+  </ion-list>
+
+
+
+
 </ion-content>

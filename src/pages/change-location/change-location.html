@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Change Location
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="updateLocation()"><ion-icon name="add"></ion-icon>Update</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page4">
+  <div #map id="map"></div>
+</ion-content>

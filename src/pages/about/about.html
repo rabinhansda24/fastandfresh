@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      About
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showCart()">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="cartn" color="accent">{{cartn[0].cart_count }}</ion-badge>
+
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content id="page8">
+  <div class="about">
+    <img src="assets/imgs/logo.png">
+  </div>
+  <div class="about-text">
+    Fast and Fresh is a late night restaurent. We are open from 11:00 AM to 05:AM next morning. WE do offer catering service to all kind of functions. For more details please contact us.
+
+  </div>
+  <div class="about-text">
+    <h2>Fast and Fresh</h2>
+    <h4>Dwarka Nagar, BSK 3rd Stage, near PES University,</h4>
+    <h4>Bangalore - 560085</h4>
+    <h4>Give us a ring @ 9972626060</h4>
+    <h4>write us @ info@fastandfresh.org</h4>
+    <h4>Visit our website: <a href="https://fastandfresh.org">www.fastandfresh.org</a></h4>
+  </div>
+
+</ion-content>

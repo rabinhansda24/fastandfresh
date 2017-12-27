@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Partner with us
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showCart()">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="cartn" color="accent">{{cartn[0].cart_count }}</ion-badge>
+
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page6">
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Name of Propritor</ion-label>
+      <ion-input type="text" name="propritor" [(ngModel)]="data.propritor"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Restaurant Name</ion-label>
+      <ion-input type="text" name="restaurant" [(ngModel)]="data.restaurant"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email ID</ion-label>
+      <ion-input type="text" name="email" [(ngModel)]="data.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Contact Number</ion-label>
+      <ion-input type="text" name="contact" [(ngModel)]="data.contact"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>City</ion-label>
+      <ion-input type="text" name="city" [(ngModel)]="data.city"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Select Category</ion-label>
+      <ion-select name="category" [(ngModel)]="data.category">
+        <ion-option value="24x7">24x7</ion-option>
+        <ion-option value="dine-in">Dine-in Restaurant</ion-option>
+        <ion-option value="late-night">Late Night Restaurant</ion-option>
+        <ion-option value="genesis">Pub/ Retro-Bar/ Club</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-input type="text" name="address" [(ngModel)]="data.address"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Web site</ion-label>
+      <ion-input type="text" name="website" [(ngModel)]="data.website"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button full item-left icon-right (click)="submit()">Submit</button>
+  </ion-toolbar>
+</ion-footer>

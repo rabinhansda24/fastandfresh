@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Notification
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showCart()">
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="cartn" color="accent">{{cartn[0].cart_count }}</ion-badge>
+
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content id="page3">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card>
+
+          <img src="assets/imgs/g1.jpg" />
+
+          <ion-card-content>
+
+            <p>
+              Ordering first time? Avail 50% discount.
+              Use Coupon Code WELCOME.
+            </p>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+      <ion-col col-6>
+        <ion-card>
+          <img src="assets/imgs/g4.jpg" />
+
+          <ion-card-content>
+
+            <p>
+              Order from app and get 20% discount. Use Coupon Code WELCOME.
+
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

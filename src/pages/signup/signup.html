@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Signup
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page10">
+  <form id="signup-form1">
+    <ion-list id="signup-list2">
+      <ion-item id="signup-input1">
+        <ion-label floating>
+          Name
+        </ion-label>
+        <ion-input type="text"  name="name" [(ngModel)]="data.name"></ion-input>
+      </ion-item>
+      <ion-item id="signup-input2">
+        <ion-label floating>
+          Email
+        </ion-label>
+        <ion-input type="email"  name="email" [(ngModel)]="data.email"></ion-input>
+      </ion-item>
+      <ion-item id="signup-input3">
+        <ion-label floating>
+          Password
+        </ion-label>
+        <ion-input type="text"  name="password" [(ngModel)]="data.password"></ion-input>
+      </ion-item>
+      <ion-item id="signup-input4">
+        <ion-label floating>
+          Phone
+        </ion-label>
+        <ion-input type="text"  name="phone" [(ngModel)]="data.phone"></ion-input>
+      </ion-item>
+      <ion-item id="signup-input5">
+        <ion-label floating>
+          Address
+        </ion-label>
+        <ion-input type="text"  name="address" [(ngModel)]="data.address"></ion-input>
+      </ion-item>
+      <ion-item id="signup-input6">
+        <ion-label floating>
+          Nearest Landmark
+        </ion-label>
+        <ion-input type="text"  name="landmark" [(ngModel)]="data.landmark"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button id="signup-button1" (click)="registerMe()" ion-button color="primary" block>
+      Sign up
+    </button>
+  </form>
+</ion-content>
