@@ -48,11 +48,10 @@ export class CartPage {
     loader.present().then(() => {
       this.getCart();
       this.getTotal();
-      console.log("total:"+this.totalAmount);
-      setTimeout(() => {
-        loader.dismiss();
-      }, 3000);
+
+
     });
+    loader.dismiss();
 
 
   }

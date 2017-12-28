@@ -2,8 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { TrackOrdersPage } from '../pages/track-orders/track-orders';
+import { TrackOrderPage } from '../pages/track-order/track-order';
 import { NotificationPage } from '../pages/notification/notification';
 import { ChangeLocationPage } from '../pages/change-location/change-location';
 import { FODDICTIONTiffinServicesPage } from '../pages/f-oddictiontiffin-services/f-oddictiontiffin-services';
@@ -13,9 +12,10 @@ import { AboutPage } from '../pages/about/about';
 import { ContactUsPage } from '../pages/contact-us/contact-us';
 import { CateringPage } from '../pages/catering/catering';
 import { ProfilePage } from  '../pages/profile/profile';
-
+import { OrdersPage } from '../pages/orders/orders';
 import { HomePage } from '../pages/home/home';
 import { MenuPage } from  '../pages/menu/menu'
+
 
 
 
@@ -42,9 +42,9 @@ export class MyApp {
   goToHome(params){
     if (!params) params = {};
     this.navCtrl.setRoot(HomePage);
-  }goToTrackOrders(params){
+  }goToTrackOrder(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(TrackOrdersPage);
+    this.navCtrl.setRoot('TrackOrderPage');
   }goToNotification(params){
     if (!params) params = {};
     this.navCtrl.setRoot(NotificationPage);
@@ -75,5 +75,8 @@ export class MyApp {
   }goToMenu(params) {
     if(!params) params = {};
     this.navCtrl.setRoot('MenuPage');
+  }goToOrders(params) {
+  if(!params) params = {};
+  this.navCtrl.setRoot('OrdersPage');
   }
 }

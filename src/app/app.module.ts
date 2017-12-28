@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { TrackOrdersPage } from '../pages/track-orders/track-orders';
+import { TrackOrderPage } from '../pages/track-order/track-order';
 import { NotificationPage } from '../pages/notification/notification';
 import { ChangeLocationPage } from '../pages/change-location/change-location';
 import { FODDICTIONTiffinServicesPage } from '../pages/f-oddictiontiffin-services/f-oddictiontiffin-services';
@@ -25,12 +25,11 @@ import { RestProvider } from '../providers/rest/rest';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
-
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    TrackOrdersPage,
+
     NotificationPage,
     ChangeLocationPage,
     FODDICTIONTiffinServicesPage,
@@ -53,7 +52,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
   entryComponents: [
     MyApp,
     HomePage,
-    TrackOrdersPage,
+
     NotificationPage,
     ChangeLocationPage,
     FODDICTIONTiffinServicesPage,

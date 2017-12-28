@@ -100,6 +100,24 @@ export class RestProvider {
       catchError(this.handleError)
     );
   }
+  getOrder(email): Observable<{}> {
+    var uri = 'getOrders.php?email=';
+    var newurl = uri.concat(email);
+    this.apiURL = this.URL.concat(newurl);
+    return this.http.get(this.apiURL).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
+  getOrderDetails(orderid) {
+    var uri = 'getOrderDetails.php?orderid=';
+    var newurl = uri.concat(orderid);
+    this.apiURL = this.URL.concat(newurl);
+    return this.http.get(this.apiURL).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
 
   getTotalAmount(email): Observable<{}> {
     var uri = 'getTotalAmount.php?email=';
@@ -110,11 +128,22 @@ export class RestProvider {
       catchError(this.handleError)
     );
   }
+  getOrderStatus(orderid) {
+    console.log('rest:'+orderid);
+    var uri = 'getOrderStatus.php?orderid=';
+    var newurl = uri.concat(orderid);
+    this.apiURL = this.URL.concat(newurl);
+    console.log('apiURL:'+this.apiURL);
+    return this.http.get(this.apiURL).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
 
 
   private extractData(res: Response | any) {
     let body = res;
-    console.log(body);
+    //console.log('body:'+body);
     return body || { };
   }
 
