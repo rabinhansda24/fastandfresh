@@ -78,6 +78,18 @@ export class RestProvider {
       catchError(this.handleError)
     );
   }
+  getOrdersCount(email): Observable<{}> {
+    var uri = 'getOrdersCount.php?email=';
+
+    console.log("Email" + email);
+    var newurl = uri.concat(email);
+    this.apiURL = this.URL.concat(newurl);
+    console.log(this.apiURL);
+    return this.http.get(this.apiURL).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    );
+  }
   deleteCart(email): Observable<{}> {
     var uri = 'deleteCart.php?email=';
 
@@ -140,10 +152,9 @@ export class RestProvider {
     );
   }
 
-
   private extractData(res: Response | any) {
     let body = res;
-    //console.log('body:'+body);
+    console.log('body:'+body);
     return body || { };
   }
 

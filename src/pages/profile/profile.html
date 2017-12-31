@@ -22,7 +22,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <div class="logedin" [style.display]="islogout" id="logedin">
+  <div [ngClass]="logedin" id="logedin">
     <div>
       <h1>{{data.name}}</h1>
       <p>{{data.email}}</p>
@@ -33,7 +33,7 @@
 
     <button ion-button full item-left icon-right (click)="logout()">Logout</button>
   </div>
-  <div class="notlogedin" [style.display]="isLogedin" id="notlogedin">
+  <div  [ngClass]="logedout" id="notlogedin">
     <button ion-button full item-left icon-right (click)="login()">Login</button> <br /> Or <br />
     <button ion-button full item-left icon-right (click)="register()">Register</button>
   </div>

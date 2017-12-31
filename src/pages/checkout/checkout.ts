@@ -29,6 +29,8 @@ export class CheckoutPage {
   msg: any;
   last_orderid:any;
   orderid:any;
+  otpVallid: any;
+  m:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loading: LoadingController, public http: Http, private storage: Storage, public rest: RestProvider, private toastCtrl: ToastController) {
     storage.get('email').then((val) => {
       this.email = val;
@@ -77,37 +79,83 @@ export class CheckoutPage {
     });
 
   }
+/*  otpVerify() {
+    var link1 = 'https://fastandfresh.org/api/otpVerify.php';
+    var otpV = JSON.stringify({email: this.email, otp: this.data.otp});
+    this.http.post(link1, otpV)
+      .subscribe(
+        data => {
+          this.otpVallid = data["_body"];
+          //console.log(this.otpVallid);
+
+        },
+        error => {}
+      );
+      //console.log('a'+this.otpVallid);
+  }*/
+
   checkOut() {
-    var link = 'https://fastandfresh.org/api/orderCheckout.php';
-    var order = JSON.stringify({email: this.email, contact: this.phone, items: this.items});
-    console.log(order);
-    this.http.post(link, order)
-      .subscribe(data => {
-        this.data.status = data["_body"];
-        console.log('API called');
-        console.log(this.data.status);
-        var resData = JSON.parse(this.data.status);
-        console.log(resData.orderid);
-        this.orderid = resData.orderid;
-        this.storage.set('orderid',this.orderid);
-        let toast = this.toastCtrl.create({
-          message: this.data.status,
-          duration: 3000,
-          position: 'bottom'
-        });
-        toast.present();
-        //this.storage.set('orderid', this.orderid);
-        this.navCtrl.setRoot('TrackOrderPage',{orderid: this.orderid});
+    var link1 = 'https://fastandfresh.org/api/otpVerify.php';
+    var otpV = JSON.stringify({email: this.email, otp: this.data.otp});
+    this.http.post(link1, otpV)
+      .subscribe(
+        data => {
+          this.otpVallid = data["_body"];
+          //console.log(this.otpVallid);
+          if (this.otpVallid == 'vallid') {
+            var link = 'https://fastandfresh.org/api/orderCheckout.php';
+            var order = JSON.stringify({email: this.email,address: this.address , contact: this.phone, items: this.items, coupon: this.data.promo});
+            console.log(order);
+            this.http.post(link, order)
+              .subscribe(data => {
+                this.data.status = data["_body"];
+                console.log('API called');
+                console.log(this.data.status);
+                var resData = JSON.parse(this.data.status);
+                console.log(resData.orderid);
+                this.orderid = resData.orderid;
+                this.storage.set('orderid',this.orderid);
+                let toast = this.toastCtrl.create({
+                  message: this.data.status,
+                  duration: 3000,
+                  position: 'bottom'
+                });
+                toast.present();
 
-      }, error => {
+                //this.storage.set('orderid', this.orderid);
+                this.navCtrl.setRoot('TrackOrderPage',{orderid: this.orderid});
 
-        let toast = this.toastCtrl.create({
-          message: this.data.status,
-          duration: 3000,
-          position: 'bottom'
-        });
-        toast.present();
-      });
+              }, error => {
+
+                let toast = this.toastCtrl.create({
+                  message: this.data.status,
+                  duration: 3000,
+                  position: 'bottom'
+                });
+                toast.present();
+              });
+          } else {
+            let toast = this.toastCtrl.create({
+              message: this.data.status,
+              duration: 3000,
+              position: 'bottom'
+            });
+            toast.present();
+          }
+        },
+        error => {
+          let toast = this.toastCtrl.create({
+            message: error,
+            duration: 3000,
+            position: 'bottom'
+          });
+          toast.present();
+        }
+      );
+
+  }
+  applyCoupon() {
+
   }
 
 }

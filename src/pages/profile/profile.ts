@@ -35,16 +35,17 @@ export class ProfilePage {
   cartn: any;
   errorMessage: string;
   signout: any;
+  logedin: string = 'show-login';
+  logedout: string = 'show-none';
   constructor(public navCtrl: NavController,private toastCtrl: ToastController,public http: Http, public navParams: NavParams, private storage: Storage, public rest: RestProvider, private device: Device) {
-    this.isLogedin = 'block';
+
     storage.get('name').then((val) => {
       this.data.name = val;
 
     });
     storage.get('email').then((val) => {
       this.data.email = val;
-      this.isLogedin = 'none';
-      this.islogout = 'block';
+      this.logedout = 'show-none';
     });
     storage.get('phone').then((val) => {
       this.data.phone = val;

@@ -62,6 +62,16 @@ page-home {
   .slide-image img {
     z-index: -1;
   }
+  .slide-wraper {
+    margin: 0;
+  }
+  .slide-wraper .text {
+    position: absolute;
+    top: 30%;
+    text-align: center;
+    z-index: 1;
+    color: #eaffcc;
 
+  }
 
 }

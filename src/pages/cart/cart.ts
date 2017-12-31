@@ -149,7 +149,31 @@ export class CartPage {
     //var link = 'http://localhost/server/freshnfast/checkout.php';
     var cartdata = JSON.stringify({email: this.email});
     console.log(cartdata);*/
-    this.navCtrl.push('CheckoutPage');
+    console.log('c:'+this.email+'c:'+this.phone);
+    var link = 'https://fastandfresh.org/api/otpGen.php';
+    var emailid = JSON.stringify({email: this.email, phone: this.phone});
+    this.http.post(link, emailid)
+      .subscribe(data => {
+        this.data.status = data["_body"];
+        let toast = this.toastCtrl.create({
+          message: this.data.status,
+          duration: 4000,
+          position: 'bottom'
+        });
+
+        toast.present();
+        console.log('api called'+this.data.status);
+        this.navCtrl.push('CheckoutPage');
+      }, error => {
+        let toast = this.toastCtrl.create({
+          message: this.data.status,
+          duration: 4000,
+          position: 'bottom'
+        });
+        toast.present();
+        console.log('api called, err:'+this.data.status);
+      });
+
     /*this.http.post(link, cartdata)
       .subscribe(data => {
         this.data.status = data["_body"];

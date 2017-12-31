@@ -19,18 +19,20 @@
 </ion-header>
 <ion-content id="page1">
   <ion-slides autoplay="3000" loop="true" class="home-slide">
-    <ion-slide class="slide1">
+    <ion-slide class="slide-wraper">
 
         <img src="assets/imgs/b1.jpg">
 
-
+      <div class="text">
+        <h1>40% discoint for first time order</h1>
+      </div>
     </ion-slide>
-    <ion-slide>
+    <ion-slide class="slide-wraper">
 
         <img src="assets/imgs/noodle.jpg">
-
-
-
+      <div class="text">
+        <h1>30% discount on ordering from our app</h1>
+      </div>
     </ion-slide>
 
   </ion-slides>
@@ -44,8 +46,5 @@
       {{ category.category_name }} - {{ category.type }} <ion-icon item-end name="arrow-forward"></ion-icon>
     </button>
   </ion-list>
-
-
-
 
 </ion-content>
