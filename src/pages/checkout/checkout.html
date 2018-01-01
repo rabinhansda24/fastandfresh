@@ -33,20 +33,47 @@
   </ion-grid>
   <ion-list>
     <ion-item>
-      Total amount payable:
+      Total amount:
       <ion-badge *ngIf="totalAmount" item-end="">&#8377;{{ totalAmount[0].total_amount }}</ion-badge>
     </ion-item>
     <ion-item>
-      <ion-label floating>Promo code</ion-label>
-      <ion-input type="text" name="promo" [(ngModel)]="data.promo"></ion-input>
+      Discount:
+      <ion-badge *ngIf="discount" item-end="">&#8377;{{ discount }}</ion-badge>
     </ion-item>
     <ion-item>
-      <ion-label floating>OTP</ion-label>
-      <ion-input type="text" name="otp" required [(ngModel)]="data.otp" ></ion-input>
+      Delivery charge:
+      <ion-badge *ngIf="deliveryCharge" item-end="">&#8377;{{deliveryCharge}}</ion-badge>
+    </ion-item>
+    <ion-item>
+      Total payable amount:
+      <ion-badge *ngIf="payableAmount" item-end="">&#8377;{{payableAmount}}</ion-badge>
     </ion-item>
 
   </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-9>
+        <ion-item>
+          <ion-label floating>Promo code</ion-label>
+          <ion-input type="text" name="promo" [(ngModel)]="data.promo"></ion-input>
+        </ion-item>
 
+      </ion-col>
+      <ion-col col-3>
+
+        <button ion-button full item-left icon-right (click)="applyCoupon()">Apply</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label floating>OTP</ion-label>
+          <ion-input type="text" name="otp" required [(ngModel)]="data.otp" ></ion-input>
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
 <ion-footer>

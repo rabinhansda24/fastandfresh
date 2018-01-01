@@ -36,10 +36,8 @@ export class MenuPage {
     loader.present().then(() => {
       this.getCategories();
       this.getCount();
-      setTimeout(() => {
-        loader.dismiss();
-      }, 3000);
     });
+    loader.dismiss();
 
 
   }

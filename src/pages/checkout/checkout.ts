@@ -31,6 +31,10 @@ export class CheckoutPage {
   orderid:any;
   otpVallid: any;
   m:any;
+  discount:any = 0;
+  payableAmount:any;
+  deliveryCharge:number = 30;
+  percentage:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loading: LoadingController, public http: Http, private storage: Storage, public rest: RestProvider, private toastCtrl: ToastController) {
     storage.get('email').then((val) => {
       this.email = val;
@@ -72,8 +76,17 @@ export class CheckoutPage {
     this.storage.get('email').then((val) => {
       this.rest.getTotalAmount(val)
         .subscribe(
-          amount => this.totalAmount = amount,
-          error => this.errorMessage = <any>error
+          amount => {
+            this.totalAmount = amount
+            //this.totalAmount = parseInt(this.totalAmount[0].total_amount);
+            console.log(parseInt(this.totalAmount[0].total_amount)+this.deliveryCharge);
+            this.payableAmount = parseInt(this.totalAmount[0].total_amount) + this.deliveryCharge;
+            console.log(this.payableAmount);
+          },
+              error => {
+                this.errorMessage = <any>error
+
+          }
         );
 
     });
@@ -109,10 +122,10 @@ export class CheckoutPage {
             this.http.post(link, order)
               .subscribe(data => {
                 this.data.status = data["_body"];
-                console.log('API called');
-                console.log(this.data.status);
+                //console.log('API called');
+                //console.log(this.data.status);
                 var resData = JSON.parse(this.data.status);
-                console.log(resData.orderid);
+                //console.log(resData.orderid);
                 this.orderid = resData.orderid;
                 this.storage.set('orderid',this.orderid);
                 let toast = this.toastCtrl.create({
@@ -155,7 +168,42 @@ export class CheckoutPage {
 
   }
   applyCoupon() {
+    this.storage.set('coupon', this.data.promo);
+    console.log('coupon:'+this.payableAmount)
+    this.storage.get('coupon').then((val) => {
+      var link = 'https://fastandfresh.org/api/applyCoupon.php';
+      var promo = JSON.stringify({coupon: val,email: this.email});
+      this.http.post(link, promo)
+        .subscribe(data => {
+          this.percentage = data["_body"];
+          console.log('API called');
+          if(this.percentage == 'reject') {
+            let toast = this.toastCtrl.create({
+              message: "This coupon is vallid only for the first order",
+              duration: 3000,
+              position: 'bottom'
+            });
+            toast.present();
+          } else {
+            console.log('per'+this.percentage);
+            this.discount = (parseInt(this.totalAmount[0].total_amount) * parseInt(this.percentage)/100);
+            console.log('discount:'+this.discount);
+            this.storage.set('discount',this.percentage);
+            this.payableAmount = this.payableAmount - this.discount;
 
+          }
+
+
+        },
+        error => {
+          let toast = this.toastCtrl.create({
+            message: error,
+            duration: 3000,
+            position: 'bottom'
+          });
+          toast.present();
+        })
+    });
   }
 
 }
