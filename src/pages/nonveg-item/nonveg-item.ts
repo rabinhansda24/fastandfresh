@@ -91,6 +91,7 @@ export class NonvegItemPage {
             position: 'bottom'
           });
           toast.present();
+          this.getCount();
           console.log(this.data.status);
         }, error => {
 

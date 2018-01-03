@@ -15,7 +15,7 @@ import { ProfilePage } from  '../pages/profile/profile';
 import { OrdersPage } from '../pages/orders/orders';
 import { HomePage } from '../pages/home/home';
 import { MenuPage } from  '../pages/menu/menu'
-
+import { CurrentLocationPage } from '../pages/current-location/current-location';
 
 
 
@@ -27,7 +27,7 @@ import { MenuPage } from  '../pages/menu/menu'
 
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = HomePage;
+    rootPage:any = 'CurrentLocationPage';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     //splashScreen.show();
@@ -44,39 +44,39 @@ export class MyApp {
     this.navCtrl.setRoot(HomePage);
   }goToTrackOrder(params){
     if (!params) params = {};
-    this.navCtrl.setRoot('TrackOrderPage');
+    this.navCtrl.push('TrackOrderPage');
   }goToNotification(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(NotificationPage);
+    this.navCtrl.push(NotificationPage);
   }goToChangeLocation(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(ChangeLocationPage);
+    this.navCtrl.push(ChangeLocationPage);
   }goToFODDICTIONTiffinServices(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(FODDICTIONTiffinServicesPage);
+    this.navCtrl.push(FODDICTIONTiffinServicesPage);
   }goToPartnerWithFOODICTION(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(PartnerWithFOODICTIONPage);
+    this.navCtrl.push(PartnerWithFOODICTIONPage);
   }goToCall(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(CallPage);
+    this.navCtrl.push(CallPage);
   }goToAbout(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(AboutPage);
+    this.navCtrl.push(AboutPage);
   }goToContactUs(params){
     if (!params) params = {};
-    this.navCtrl.setRoot(ContactUsPage);
+    this.navCtrl.push(ContactUsPage);
   }goToCatering(params) {
     if (!params) params = {};
-    this.navCtrl.setRoot('CateringPage');
+    this.navCtrl.push('CateringPage');
   }goToProfile(params) {
     if(!params) params = {};
-    this.navCtrl.setRoot('ProfilePage');
+    this.navCtrl.push('ProfilePage');
   }goToMenu(params) {
     if(!params) params = {};
-    this.navCtrl.setRoot('MenuPage');
+    this.navCtrl.push('MenuPage');
   }goToOrders(params) {
   if(!params) params = {};
-  this.navCtrl.setRoot('OrdersPage');
+  this.navCtrl.push('OrdersPage');
   }
 }

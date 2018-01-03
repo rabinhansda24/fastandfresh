@@ -97,6 +97,7 @@ export class VegItemPage {
             position: 'bottom'
           });
           toast.present();
+          this.getCount();
           console.log(this.data.status);
         }, error => {
 

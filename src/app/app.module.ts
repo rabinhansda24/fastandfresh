@@ -23,6 +23,7 @@ import {IonicStorageModule } from '@ionic/storage';
 import { Device } from '@ionic-native/device';
 import { RestProvider } from '../providers/rest/rest';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {NativeGeocoder} from "@ionic-native/native-geocoder";
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     RestProvider,
     HttpClientModule,
     HttpClient,
+    NativeGeocoder,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 
   ]

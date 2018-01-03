@@ -52,9 +52,9 @@ export class MenuPage {
   }
   getMenus(cid, type, category) {
     if(type == 'veg') {
-      this.navCtrl.setRoot('VegItemPage',{categoryId:cid, category: category});
+      this.navCtrl.push('VegItemPage',{categoryId:cid, category: category});
     } else {
-      this.navCtrl.setRoot('NonvegItemPage',{categoryId:cid, category: category});
+      this.navCtrl.push('NonvegItemPage',{categoryId:cid, category: category});
     }
 
   }

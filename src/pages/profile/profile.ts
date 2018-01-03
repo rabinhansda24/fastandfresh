@@ -36,7 +36,7 @@ export class ProfilePage {
   errorMessage: string;
   signout: any;
   logedin: string = 'show-login';
-  logedout: string = 'show-none';
+  notlogin: string = 'show-none';
   constructor(public navCtrl: NavController,private toastCtrl: ToastController,public http: Http, public navParams: NavParams, private storage: Storage, public rest: RestProvider, private device: Device) {
 
     storage.get('name').then((val) => {
@@ -45,7 +45,7 @@ export class ProfilePage {
     });
     storage.get('email').then((val) => {
       this.data.email = val;
-      this.logedout = 'show-none';
+      this.notlogin = 'show-none';
     });
     storage.get('phone').then((val) => {
       this.data.phone = val;
@@ -54,11 +54,15 @@ export class ProfilePage {
       this.data.address = val;
     });
     this.data.deviceid = this.device.uuid;
+
   }
 
   ionViewDidLoad() {
 
     this.getCount();
+    if(this.data.email == '') {
+      this.navCtrl.push(LoginPage);
+    }
 
   }
   showCart() {
@@ -72,8 +76,8 @@ export class ProfilePage {
   }
   logout() {
     this.storage.clear();
-    this.isLogedin = 'block';
-    this.islogout = 'none';
+    this.logedin = 'show-none';
+    this.notlogin = 'show-login';
 
   }
   getCount() {

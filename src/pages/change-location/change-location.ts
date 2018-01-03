@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import {LoadingController, NavController} from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder'
 
 
 declare var google;
@@ -16,7 +17,7 @@ export class ChangeLocationPage {
   map: any;
   public lat;
   public lan;
-  constructor(public navCtrl: NavController,public loading: LoadingController, public geolocation: Geolocation, public loadingCtrl: LoadingController) {
+  constructor(private nativeGeocoder: NativeGeocoder, public navCtrl: NavController,public loading: LoadingController, public geolocation: Geolocation, public loadingCtrl: LoadingController) {
   }
   presentLoadingCustom() {
     let loading = this.loadingCtrl.create({
@@ -44,15 +45,17 @@ export class ChangeLocationPage {
       }, 3000);
 
     });
-    ;
+
   }
   loadMap() {
 
     this.geolocation.getCurrentPosition({enableHighAccuracy: true,  maximumAge: 0}).then((position) => {
 
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
       this.lat = position.coords.latitude;
       this.lan = position.coords.longitude;
+
       let mapOptions = {
         center: latLng,
         zoom: 17,

@@ -74,6 +74,16 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-list radio-group [(ngModel)]="data.paymentMethod">
+    <ion-list-header>
+      Payment method
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Cash on Delivery (COD)</ion-label>
+      <ion-radio value="cod" checked></ion-radio>
+    </ion-item>
+
+  </ion-list>
 
 </ion-content>
 <ion-footer>
